@@ -13,6 +13,7 @@ class CreateContactsTable extends Migration
             $table->string('name')->require();
             $table->string('email')->unique()->require();
             $table->text('message')->require();
+            $table->date('birthday')->require();
             $table->foreignId('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
