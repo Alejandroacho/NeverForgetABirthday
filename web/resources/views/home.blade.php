@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +13,22 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <h1>Contacts:</h1>
+                    <hr>
+                    @if (isset($contacts))
+                        <p>There is no contacts in your list. Try to add one!</p>
+                    @endif
+                    @if (!isset($contacts))
+                        @foreach ($contacts as $contact)
+                        @endforeach
+                    @endif
+                </div>
+                <div class="card-footer">
+                    <div class="button">
+                        <a href="{{route('login')}}">
+                            <button type="button" class="btn btn-warning">NEW CONTACT</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
