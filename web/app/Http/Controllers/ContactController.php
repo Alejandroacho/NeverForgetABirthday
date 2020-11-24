@@ -28,23 +28,39 @@ class ContactController extends Controller
 
     public function show(Contact $contact)
     {
-        return view('contact.show', ['contact'=>$contact]);
+        $user = Auth::user();
+        if($contact->user_id == $user->id){
+            return view('contact.show', ['contact'=>$contact]);
+        }
+        return view('nopermission');
     }
 
     public function edit(Contact $contact){
-        return view('contact.edit',['contact'=>$contact]);
+        $user = Auth::user();
+        if($contact->user_id == $user->id){
+            return view('contact.edit',['contact'=>$contact]);
+        }
+        return view('nopermission');
     }
 
     public function update(Request $request, Contact $contact)
     {
-        $contact->update($request->all());
-        return redirect(route('home'));
+        $user = Auth::user();
+        if($contact->user_id == $user->id){
+            $contact->update($request->all());
+            return redirect(route('home'));
+        }
+        return view('nopermission');
     }
 
     public function destroy(Contact $contact)
     {
-        $contact->delete();
-        return redirect (route('home'));
+        $user = Auth::user();
+        if($contact->user_id == $user->id){
+            $contact->delete();
+            return redirect (route('home'));
+        }
+        return view('nopermission');
     }
 
 }

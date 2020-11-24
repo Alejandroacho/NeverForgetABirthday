@@ -19,7 +19,10 @@
                     <hr>
                     <ul>
                         <li>
-                            <p>You can personalize the message to your contact.</p>
+                            <p>You can personalize the message for your contact.</p>
+                        </li>
+                        <li>
+                            <p>Receive a reminder one week before your contact's birthday.</p>
                         </li>
                         <li>
                             <p>We make our biggest effort to guarantee you security.</p>

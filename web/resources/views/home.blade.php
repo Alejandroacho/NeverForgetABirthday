@@ -35,9 +35,9 @@
                             <td>
                                 <a href="{{Route('contact.show',$contact->id)}}" role="button"><h3>{{$contact->name}}</h3></a>
                             </td>
-                            <td><h4>{{$contact->birthday}}</h4></td>
+                            <td><h5>{{$contact->birthday}}</h5></td>
                             <td>
-                                <a style="color:white" href="{{Route('contact.edit',$contact->id)}}" class="btn btn-info" role="button"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                <a style="color:white" href="{{Route('contact.edit',$contact->id)}}" class="btn btn-info" role="button"><i class="fas fa-pencil-square" aria-hidden="true"></i></a>
                             </td>
                             <td>
                                 <form action="{{route('contact.destroy', $contact->id)}}" method="post">
