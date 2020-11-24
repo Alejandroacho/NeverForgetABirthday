@@ -15,7 +15,7 @@ class ContactFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->safeEmail,
             'message' => $this->faker->paragraph($nb = 3, $asText = false),
-            'birthday' => $this->faker->date($format = 'm-d', $max = 'now'),
+            'birthday' => $this->faker->date(),
             'user_id' => $this->faker->randomDigitNot(0)
         ];
     }
