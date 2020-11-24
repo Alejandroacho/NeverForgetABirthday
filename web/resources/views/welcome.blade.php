@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card-welcome">
-                    <h1><b>Never Forgive A Birthday Anymore!</b></h1>
+                    <h1><b>Never Forget A Birthday Anymore!</b></h1>
                     <br>
                     <img src="{{asset('img/logo.png')}}" alt="Logo" width="100" height="100">
                     <br>

@@ -4,82 +4,47 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('contact.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->message = $request->message;
+        $contact->birthday = $request->birthday;
+        $contact->user_id = $user->id;
+        $contact->save();
+        return redirect(route('home'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
     public function show(Contact $contact)
     {
-        //
+        return view('contact.show', ['contact'=>$contact]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Contact $contact)
-    {
-        //
+    public function edit(Contact $contact){
+        return view('contact.edit',['contact'=>$contact]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->update($request->all());
+        return redirect(route('home'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return redirect (route('home'));
     }
+
 }
