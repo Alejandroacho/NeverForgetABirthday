@@ -1,6 +1,6 @@
-<p align="center"><a href="http://neverforgetabirthday.alejandroacho.com/" target="_blank"><img src="https://github.com/Alejandroacho/NeverForgetABirthday/public/img/logo.png" width="200"></a></p>
+<p align="center"><a href="http://neverforgetabirthday.alejandroacho.com/" target="_blank"><img src="https://github.com/Alejandroacho/NeverForgetABirthday/blob/master/web/public/img/logo.png" width="200"></a></p>
 
-# NeverForgiveABirthday
+# About NeverForgiveABirthday
 
 With this tool you only have to add a contact, write a letter for his birthday, and finally add his birthday date.
 
