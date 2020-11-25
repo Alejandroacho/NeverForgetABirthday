@@ -31,7 +31,7 @@ class ContactControllerTest extends TestCase
         $email = $user->email;
         $this->assertNotNull($email);
     }
-
+//+++++++++++++++++++++++++++++++++++++++++++ LOGGED IN WITH TEST++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public function test_user_logged_can_access_home()
     {
         $user = User::factory()->create();
@@ -48,12 +48,13 @@ class ContactControllerTest extends TestCase
 
     public function test_user_logged_can_add_a_new_contact()
     {
+        $this->withoutExceptionHandling();
         $user = User::factory()->create();
         $response = $this->actingAs($user)->post('/contact', [
             "name" => "Testing Contact",
             "email" => "testing@contact.com",
             "message" => "Testing text",
-            "birthday" => "10/09/1995",
+            "birthday" => "1995/09/10",
             "user_id" => $user->id,
         ]);
 
@@ -61,7 +62,7 @@ class ContactControllerTest extends TestCase
             "name" => "Testing Contact",
             "email" => "testing@contact.com",
             "message" => "Testing text",
-            "birthday" => "10/09/1995",
+            "birthday" => "1995/09/10",
             "user_id" => $user->id,
         ]);
 
@@ -76,7 +77,7 @@ class ContactControllerTest extends TestCase
             $contact->name = "Testing Contact";
             $contact->email = "testing@contact.com";
             $contact->message = "Testing text";
-            $contact->birthday = "10/09/1995";
+            $contact->birthday = "1995/10/09";
             $contact->user_id = $user->id;
             $contact->save();
         $response = $this->actingAs($user)->get("/contact/".$contact->id."/edit");
@@ -90,7 +91,7 @@ class ContactControllerTest extends TestCase
             "name" => "Testing Contact",
             "email" => "testing@contact.com",
             "message" => "Testing text",
-            "birthday" => "10/09/1995",
+            "birthday" => "1995/09/10",
             "user_id" => $user->id,
         ]);
 
@@ -98,7 +99,7 @@ class ContactControllerTest extends TestCase
             "name" => "Testing Contact 2",
             "email" => "testing@contact.com",
             "message" => "Testing text",
-            "birthday" => "10/09/1995",
+            "birthday" => "1995/09/10",
             "user_id" => $user->id,
         ]);
 
@@ -106,7 +107,7 @@ class ContactControllerTest extends TestCase
             "name" => "Testing Contact 2",
             "email" => "testing@contact.com",
             "message" => "Testing text",
-            "birthday" => "10/09/1995",
+            "birthday" => "1995/09/10",
             "user_id" => $user->id,
         ]);
 
@@ -121,7 +122,7 @@ class ContactControllerTest extends TestCase
             $contact->name = "Testing Contact";
             $contact->email = "testing@contact.com";
             $contact->message = "Testing text";
-            $contact->birthday = "10/09/1995";
+            $contact->birthday = "1995/09/10";
             $contact->user_id = $user->id;
             $contact->save();
         $response = $this->actingAs($user)->get("/contact/".$contact->id);
@@ -144,7 +145,7 @@ class ContactControllerTest extends TestCase
         ]);
         $this->assertEquals(302, $response->status());
     }
-
+//+++++++++++++++++++++++++++++++++++++++++++ LOGGED IN WITH OTHER USER TEST++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public function test_id_user_cannot_see_contact_from_other_user()
     {
         $user = User::factory()->create();

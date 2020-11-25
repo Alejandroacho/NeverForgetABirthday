@@ -62,7 +62,7 @@ class UserControllerTest extends TestCase
 
     public function test_if_contact_has_user_associated()
     {
-        $users = User::factory(10)->create();
+        User::factory(10)->create();
         $contact = Contact::factory()->create();
         $user_id = $contact->user_id;
         $this->assertNotNull($user_id);
