@@ -17,7 +17,7 @@
                     <hr>
 
                     @if ($contacts->count() == 0)
-                        <p>There is no contacts in your list. Try to add one!</p>
+                        <p>There are no contacts in your list. Try to add one!</p>
                     @endif
 
                     @if ($contacts->count() != 0)
