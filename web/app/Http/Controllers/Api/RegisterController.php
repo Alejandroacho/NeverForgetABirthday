@@ -54,4 +54,13 @@ class RegisterController extends BaseController
             'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+    }
 }
